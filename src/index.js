@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import UserList from './components/user/user';
+import Login from './components/login/login';
 import * as serviceWorker from './serviceWorker';
-
+import { Provider } from 'react-redux';
+import { store } from './helpers/store';
+import 'bootstrap/dist/css/bootstrap.css';
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Suspense fallback={(<div>Loading </div>)}>
+    <Provider store={store} >
+      <Login></Login>
+    </Provider>,
+  </Suspense >,
   document.getElementById('root')
 );
 
