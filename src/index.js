@@ -7,10 +7,23 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store } from './helpers/store';
 import 'bootstrap/dist/css/bootstrap.css';
+import { history } from './helpers/history';
+import {
+  Router,
+  Route,
+  Switch,
+} from "react-router-dom";
 ReactDOM.render(
   <Suspense fallback={(<div>Loading </div>)}>
     <Provider store={store} >
-      <Login></Login>
+      <Router history={history}>
+        <Switch>
+          <Route path="/users" component={UserList}>
+          </Route>
+          <Route path="/" component={Login}>
+          </Route>
+        </Switch>
+      </Router>
     </Provider>,
   </Suspense >,
   document.getElementById('root')

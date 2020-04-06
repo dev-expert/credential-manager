@@ -17,8 +17,27 @@ function login(email, password) {
     return axios.post(apiUrl + "login", dataToSend, axiosConfig)
         .then(handleResponse)
         .then(user => {
+            localStorage.setItem('user', JSON.stringify(user));
             return user;
         });
+}
+
+function getUsers() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.token) {
+        let axiosConfig = {
+            headers: {
+                'x-access-token': user.token
+            }
+        }
+        const apiUrl = 'http://localhost:8080/'
+        return axios.get(encodeURI(apiUrl + "users"), axiosConfig)
+            .then(handleResponse)
+            .then(res => {
+                return res;
+            });
+    }
+
 }
 
 function handleResponse(response) {
@@ -29,12 +48,3 @@ function handleResponse(response) {
     return response.data;
 }
 
-function getUsers() {
-    debugger;
-    // const url = 'http://localhost:3000/v1/'
-    // return axios.get(url + `customer/breakdownOfAssignment`)
-    // .then(res => {
-    //     return res.data;
-    // });
-
-}

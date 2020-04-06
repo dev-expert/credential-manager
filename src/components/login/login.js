@@ -18,6 +18,7 @@ class Login extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         userService.login(this.state.email, this.state.password).then(res => {
+            this.props.history.replace('/users')
         });
     }
 
@@ -34,14 +35,14 @@ class Login extends React.Component {
             <div className="Login">
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label for="email">Email:{this.state.email}</label>
+                        <label>Email:{this.state.email}</label>
                         <input type="text" className="form-control" name="email" value={email} id="email" onChange={this.handleChange} />
                     </div>
                     <div className="form-group">
-                        <label for="password">Password:</label>
+                        <label>Password:</label>
                         <input type="password" className="form-control" name="password" value={password} onChange={this.handleChange} id="password" />
                     </div>
-                    <Button block bsSize="large" type="submit">
+                    <Button block type="submit">
                         Login
                   </Button>
                 </form>

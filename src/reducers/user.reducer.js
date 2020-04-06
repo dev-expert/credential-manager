@@ -1,6 +1,5 @@
 import { userConstant } from '../constants/user.constant';
 export function users(state = {}, action) {
-    debugger
     switch (action.type) {
         case userConstant.GET_USER_REQUEST:
             return {
