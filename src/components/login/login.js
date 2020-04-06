@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { userAction } from '../../actions/user.action';
+import { userService } from '../../services/user.service';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { connect } from 'react-redux';
 class Login extends React.Component {
@@ -15,19 +16,9 @@ class Login extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger;
         e.preventDefault();
-        const apiUrl = 'https://5j90ullg.myhook.io/CredentialManager/public/api/auth/login'
-        let axiosConfig = {
-            headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-            }
-        };
-        const dataToSend = JSON.stringify({ email: this.state.email, Password: this.state.password });
-        axios.post(apiUrl + "Account/CreateToken", dataToSend, axiosConfig)
-            .then(user => {
-                debugger;
-            });
+        userService.login(this.state.email, this.state.password).then(res => {
+        });
     }
 
     handleChange(event) {
