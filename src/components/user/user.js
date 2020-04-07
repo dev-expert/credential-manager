@@ -17,7 +17,6 @@ class UserList extends React.Component {
     }
 
     render() {
-        debugger;
         const { users } = this.props;
         return (
             <div className="container">
@@ -27,17 +26,21 @@ class UserList extends React.Component {
                </button>
                 </div>
                 <br />
-                <table className="table table-bordered table=hover">
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Created Date</th>
-                        <th>Created By</th>
-                        <th>Actions</th>
-                    </tr>
-                    {
-                        users && users.users && this.bindUserList(users.users)
-                    }
+                <table className="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Created Date</th>
+                            <th>Created By</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users && users.users && this.bindUserList(users.users)
+                        }
+                    </tbody>
                 </table>
                 <div className="modal" id="myModal">
                     <div className="modal-dialog">
@@ -48,15 +51,15 @@ class UserList extends React.Component {
                             </div>
                             <div className="modal-body">
                                 <div className="form-group">
-                                    <label for="name">Name:</label>
+                                    <label >Name:</label>
                                     <input type="text" className="form-control" id="name" />
                                 </div>
                                 <div className="form-group">
-                                    <label for="email">Email:</label>
+                                    <label >Email:</label>
                                     <input type="text" className="form-control" id="email" />
                                 </div>
                                 <div className="form-group">
-                                    <label for="password">Password:</label>
+                                    <label >Password:</label>
                                     <input type="password" className="form-control" id="password" />
                                 </div>
                             </div>
